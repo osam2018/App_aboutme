@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">AboutMe</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name='mention_Spalsh'> "정신없는 세상 속에서\n'나'를 지키는 세 줄"</string>
+    <string name='mention_Home'>오늘 하루는 어떠셨나요?</string>
+
+</resources>
