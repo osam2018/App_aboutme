@@ -5,15 +5,13 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    android:alpha="0.8"
     tools:context=".MainActivity">
 
     <fragment
         android:id="@+id/homeFragment"
+        android:name="com.example.user.aboutme.HomeFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:name="com.example.user.aboutme.HomeFragment" />
+        android:layout_height="match_parent" />
 
 
     <android.support.design.widget.BottomNavigationView
