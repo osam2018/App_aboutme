@@ -7,4 +7,10 @@
     <string name='mention_Spalsh'> "정신없는 세상 속에서\n'나'를 지키는 세 줄"</string>
     <string name='mention_Home'>오늘 하루는 어떠셨나요?</string>
 
+    <string name="writing_intro">안녕하세요.\n오늘 하루도 멋진 추억으로 남겨볼까요?</string>
+    <string name="writing_q_date">오늘은 몇월 몇일인가요?</string>
+    <string name="writing_q_first">오늘 가장 안좋았던 일은 무엇인가요?</string>
+    <string name="writing_q_second">오늘 가장 좋았던 일은 무엇인가요?</string>
+    <string name="writing_q_third">내일의 다짐은 무엇으로 해볼까요?</string>
+
 </resources>
