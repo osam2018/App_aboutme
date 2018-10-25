@@ -1,5 +1,6 @@
 package com.example.user.aboutme;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -48,21 +49,60 @@ public class MainActivity extends AppCompatActivity {
         historyFragment = new HistoryFragment();
         settingsFragment = new SettingsFragment();
 
+        //To Writing Page
         Button writingbutton = (Button) findViewById(R.id.writingbutton) ;
+
         writingbutton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 inflater.inflate(R.layout.fragment_writing, container, true);
+
                 mTxtDate = (TextView)findViewById(R.id.txtdate);
                 Calendar cal = new GregorianCalendar();
                 mYear = cal.get(Calendar.YEAR);
                 mMonth = cal.get(Calendar.MONTH);
                 mDay = cal.get(Calendar.DAY_OF_MONTH);
                 UpdateNow();
+
+                Button writingfirstbutton = (Button) findViewById(R.id.writingfirstbutton) ;
+                writingfirstbutton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                        inflater.inflate(R.layout.fragment_writing_first, container, true);
+                        //From Writing_First page to Writing_Second Page
+                        Button writingsecondbutton = (Button) findViewById(R.id.writingsecondbutton) ;
+                        writingsecondbutton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                                inflater.inflate(R.layout.fragment_writing_second, container, true);
+                                //From Writing_Second page to Writing_Third Page
+                                Button writingthirdbutton = (Button) findViewById(R.id.writingthirdbutton) ;
+                                writingthirdbutton.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                                        inflater.inflate(R.layout.fragment_writing_third, container, true);
+                                        //From Writing_Third page to Writing Page
+                                        Button writingfinalbutton = (Button) findViewById(R.id.writingfinalbutton) ;
+                                        writingfinalbutton.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                                                inflater.inflate(R.layout.fragment_home, container, true);
+                                            }
+                                        });
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
             }
         });
-
 
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -118,15 +158,24 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    public interface onKeyBackPressedListener{
+        void onBackKey();
+    }
+    private onKeyBackPressedListener mOnKeyBackPressedListener;
+    public void setOnKeyBackPressedListener(onKeyBackPressedListener listener){
+        mOnKeyBackPressedListener = listener;
+    }
 
     @Override
     public void onBackPressed() {
-        if (System.currentTimeMillis() - lastTimeBackPressed < 1500) {
+        if (mOnKeyBackPressedListener != null) {
+            mOnKeyBackPressedListener.onBackKey();
+        } else {if (System.currentTimeMillis() - lastTimeBackPressed < 1500) {
             finish();
             return;
         }
-        Toast.makeText(this, "'뒤로' 버튼을 한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
-        lastTimeBackPressed = System.currentTimeMillis();
+            Toast.makeText(this, "'뒤로' 버튼을 한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
+            lastTimeBackPressed = System.currentTimeMillis();
+        }
     }
-
 }
